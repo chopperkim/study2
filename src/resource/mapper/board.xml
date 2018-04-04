@@ -14,15 +14,9 @@
 						 OR bo_writer  LIKE '%' ||  #{searchWord} || '%'
 						 OR bo_content LIKE '%' ||  #{searchWord} || '%'
 						</when>
-						<when test="searchType == 'bo_title'">
-							bo_title   LIKE '%' ||  #{searchWord} || '%'
-						</when>
-						<when test="searchType == 'bo_writer'">
-							bo_writer  LIKE '%' ||  #{searchWord} || '%'
-						</when>
-						<when test="searchType == 'bo_content'">
-							bo_content LIKE '%' ||  #{searchWord} || '%'
-						</when>
+						<otherwise>
+							${searchType}   LIKE '%' ||  #{searchWord} || '%'
+						</otherwise>
 					</choose>  					
   			</if>  
   		</where>
@@ -79,6 +73,9 @@
   </select>
   
   <insert id="insertBoard" parameterType="board">
+  <selectKey keyProperty="bo_no" order="BEFORE" resultType="int" >
+  	SELECT seq_board.nextval FROM dual
+  </selectKey>  
   	 INSERT INTO tb_board            
        (   bo_no                 
          , bo_title              
@@ -90,7 +87,7 @@
          , bo_read_cnt           
          , bo_reg_date           
          , bo_mod_date )         
-   VALUES (  seq_board.nextval   
+   VALUES ( #{bo_no}    
 	   	    , #{bo_title}                     
 	   	    , #{bo_writer}                     
 	   	    , #{bo_passwd}                     

@@ -11,9 +11,8 @@ import java.util.Map;
 import com.study.board.vo.Board;
 import com.study.board.vo.BoardSearch;
 
-public class BoardDaoJDBC implements IBoardDao {
+public class BoardDaoJDBC {
 	
-	@Override
 	public int getBoardCount(Connection conn, BoardSearch boardSearch) throws SQLException{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -32,7 +31,6 @@ public class BoardDaoJDBC implements IBoardDao {
 	}
 	
 	
-	@Override
 	public List<Board> getBoardList(Connection conn, BoardSearch boardSearch) throws SQLException{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -88,7 +86,6 @@ public class BoardDaoJDBC implements IBoardDao {
 	}
 	
 	// 회원상세
-	@Override
 	public Board getBoard(Connection conn, Integer bo_no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -132,7 +129,6 @@ public class BoardDaoJDBC implements IBoardDao {
 	}
 	
 	// 회원등록 
-	@Override
 	public int insertBoard(Connection conn, Board board) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;		
@@ -178,7 +174,6 @@ public class BoardDaoJDBC implements IBoardDao {
 	}
 	
 	// 회원수정 
-	@Override
 	public int updateBoard(Connection conn, Board board) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;		

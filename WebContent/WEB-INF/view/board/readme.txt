@@ -56,15 +56,7 @@ WebContent 에 board 폴더 생성
       -- 변경후 테스트 
 3. 인서트 실행후 입력된 PK 값을 처리하고 싶다면
       -- selectKey 이용 
-
 4. 복합 객체(1:1, 1:N)의 처리는?          
-
- mybatis 에서 
- 
- foreach 읽어주시고
- insert 를 찾아보시면 selectKey  
-
-
 
 
 
